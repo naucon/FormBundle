@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="naucon_form.factory.class">Naucon\Form\FormManager</parameter>
+        <parameter key="naucon_form.translator.class">Naucon\Form\Translator\TranslatorBridge</parameter>
+        <parameter key="naucon_form.validator.class">Naucon\Form\Validator\ValidatorBridge</parameter>
+        <parameter key="naucon_form.synchronizer_token.class">Naucon\Form\Security\SynchronizerTokenBridge</parameter>
+    </parameters>
+
+    <services>
+        <service id="naucon_form.translator" class="%naucon_form.translator.class%" public="false">
+            <argument type="service" id="translator"/>
+        </service>
+
+        <service id="naucon_form.validator" class="%naucon_form.validator.class%" public="false">
+            <argument type="service" id="validator"/>
+        </service>
+
+        <service id="naucon_form.synchronizer_token" class="%naucon_form.synchronizer_token.class%" public="false">
+            <argument type="service" id="security.csrf.token_manager"/>
+        </service>
+
+        <service id="naucon_form.factory" class="%naucon_form.factory.class%" public="true">
+            <argument>%naucon_form.options%</argument>
+            <call method="setTranslator">
+                <argument type="service" id="naucon_form.translator" />
+            </call>
+            <call method="setValidator">
+                <argument type="service" id="naucon_form.validator" />
+            </call>
+            <call method="setSynchronizerToken">
+                <argument type="service" id="naucon_form.synchronizer_token" />
+            </call>
+            <call method="setLogger">
+                <argument type="service" id="logger" />
+            </call>
+        </service>
+    </services>
+</container>
