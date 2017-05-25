@@ -84,8 +84,8 @@ Get Started
     }
 ```
 
-TODO
-----
+Roadmap
+-------
 
-Smarty Extensions integration
-add naucon validator translations
+* Smarty Extensions integration
+* add naucon validator to translations
