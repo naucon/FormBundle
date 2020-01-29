@@ -9,10 +9,11 @@
  */
 namespace Naucon\Bundle\FormBundle\Tests\DependencyInjection;
 
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Naucon\Bundle\FormBundle\DependencyInjection\NauconFormExtension;
 
-class NauconFormExtensionTest extends \PHPUnit_Framework_TestCase
+class NauconFormExtensionTest extends TestCase
 {
     /**
      * @dataProvider configProvider
@@ -21,25 +22,19 @@ class NauconFormExtensionTest extends \PHPUnit_Framework_TestCase
     {
         $container = new ContainerBuilder();
         $loader = new NauconFormExtension();
-        $loader->load(array($config), $container);
+        $loader->load([$config], $container);
 
         $this->assertEquals($config, $container->getParameter('naucon_form.options'));
-
-// not working because symfony services are not present
-//        $this->assertInstanceOf('Naucon\Form\Translator\TranslatorInterface', $container->get('naucon_form.translator'));
-//        $this->assertInstanceOf('Naucon\Form\Validator\ValidatorInterface', $container->get('naucon_form.validator'));
-//        $this->assertInstanceOf('Naucon\Form\Security\SynchronizerTokenInterface', $container->get('naucon_form.synchronizer_token'));
-//        $this->assertInstanceOf('Naucon\Form\FormManager', $container->get('naucon_form.factory'));
     }
 
     public function configProvider()
     {
-        return array(
-            array(
-                array('csrf_parameter' => '_csrf_token', 'csrf_protection' => true),
-                array('csrf_parameter' => '_csrf_token', 'csrf_protection' => false),
-                array('csrf_parameter' => '_foo_token', 'csrf_protection' => true)
-            )
-        );
+        return [
+            [
+                ['csrf_parameter' => '_csrf_token', 'csrf_protection' => true],
+                ['csrf_parameter' => '_csrf_token', 'csrf_protection' => false],
+                ['csrf_parameter' => '_foo_token', 'csrf_protection' => true]
+            ]
+        ];
     }
 }

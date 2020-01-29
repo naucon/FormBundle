@@ -9,30 +9,42 @@
  */
 namespace Naucon\Bundle\FormBundle\Tests\DependencyInjection\Compiler;
 
+use PHPUnit\Framework\TestCase;
 use Naucon\Bundle\FormBundle\DependencyInjection\Compiler\FormCompilerPass;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Definition;
 
-class FormCompilerPassTest extends \PHPUnit_Framework_TestCase
+class FormCompilerPassTest extends TestCase
 {
+    /**
+     * @var ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
+     */
     private $containerMock;
+
+    /**
+     * @var Definition|\PHPUnit_Framework_MockObject_MockObject
+     */
     private $definitionMock;
 
     public function setUp()
     {
-        $this->containerMock = $this->getMock('Symfony\Component\DependencyInjection\ContainerBuilder');
-        $this->definitionMock = $this->getMock('Symfony\Component\DependencyInjection\Definition');
+        $this->containerMock = $this->createMock(ContainerBuilder::class);
+        $this->definitionMock = $this->createMock(Definition::class);
     }
 
     public function testProcess()
     {
-        $this->containerMock->expects($this->once())
+        $this->containerMock
+            ->expects($this->once())
             ->method('hasDefinition')
             ->with('translator.default')
-            ->will($this->returnValue(true));
+            ->willReturn(true);
 
-        $this->containerMock->expects($this->any())
+        $this->containerMock
+            ->expects($this->any())
             ->method('getDefinition')
             ->with('translator.default')
-            ->will($this->returnValue($this->definitionMock));
+            ->willReturn($this->definitionMock);
 
         $compiler = new FormCompilerPass();
         $compiler->process($this->containerMock);

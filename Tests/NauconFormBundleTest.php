@@ -9,17 +9,20 @@
  */
 namespace Naucon\Bundle\FormBundle\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Naucon\Bundle\FormBundle\NauconFormBundle;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Naucon\Bundle\FormBundle\DependencyInjection\Compiler\FormCompilerPass;
 
-class NauconFormBundleTest extends \PHPUnit_Framework_TestCase
+class NauconFormBundleTest extends TestCase
 {
     public function testBuild()
     {
-        new \Symfony\Component\DependencyInjection\ContainerBuilder();
-
-        $containerMock = $this->getMock('Symfony\Component\DependencyInjection\ContainerBuilder');
-        $containerMock->expects($this->exactly(1))
+        $containerMock = $this->createMock(ContainerBuilder::class);
+        $containerMock
+            ->expects($this->once())
             ->method('addCompilerPass')
+            ->with($this->isInstanceOf(FormCompilerPass::class))
         ;
 
         $bundle = new NauconFormBundle();
