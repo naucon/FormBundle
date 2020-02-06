@@ -8,7 +8,7 @@ Bundle to integrate naucon form package into the Symfony2 framework.
 
 ### Compatibility
 
-* PHP5.5
+* PHP5.5.9
 
 
 Installation

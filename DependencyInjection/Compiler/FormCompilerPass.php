@@ -12,6 +12,7 @@ namespace Naucon\Bundle\FormBundle\DependencyInjection\Compiler;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\Finder\Finder;
+use Naucon\Form\FormManager;
 
 /**
  * Form Compiler Pass
@@ -22,7 +23,7 @@ use Symfony\Component\Finder\Finder;
 class FormCompilerPass implements CompilerPassInterface
 {
     /**
-     * @param ContainerBuilder  $container
+     * @param ContainerBuilder $container
      */
     public function process(ContainerBuilder $container)
     {
@@ -31,8 +32,8 @@ class FormCompilerPass implements CompilerPassInterface
             // add default translations from symfony validation component
             $dirs = array();
             if (class_exists('Naucon\Form\FormManager')) {
-                $r = new \ReflectionClass('Naucon\Form\FormManager');
-                $dir = dirname($r->getFileName()).'/Resources/translations';
+                $r = new \ReflectionClass(FormManager::class);
+                $dir = dirname($r->getFileName()) . '/Resources/translations';
                 if (is_dir($dir)) {
                     $dirs[] = $dir;
                 }
@@ -49,8 +50,9 @@ class FormCompilerPass implements CompilerPassInterface
             foreach ($finder as $file) {
                 list($translationDomain, $locale, $extension) = $foo = explode('.', $file->getBasename(), 3);
 
-                $container->getDefinition('translator.default')
-                    ->addMethodCall('addResource', array($extension, $file->getPathname(), $locale, $translationDomain));
+                $container
+                    ->getDefinition('translator.default')
+                    ->addMethodCall('addResource', [$extension, $file->getPathname(), $locale, $translationDomain]);
             }
 
         }
