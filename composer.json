@@ -1,7 +1,7 @@
 {
     "name": "naucon/form-bundle",
-    "description": "Bundle to integrate naucon form package into the Symfony2 framework.",
-    "keywords": ["form", "forms", "formbundle", "bundle", "collection", "validation", "csrf", "xsrf", "Cross-Site-Request-Forgery", "symfony", "symfony2", "smarty"],
+    "description": "Bundle to integrate naucon form package into the Symfony framework.",
+    "keywords": ["form", "forms", "formbundle", "bundle", "collection", "validation", "csrf", "xsrf", "Cross-Site-Request-Forgery", "symfony", "smarty"],
     "homepage": "https://github.com/naucon/FormBundle",
     "type": "library",
     "license": "MIT",
@@ -11,16 +11,15 @@
         }
     ],
     "require": {
-        "php": "^5.5.9|>=7.0.8",
-        "naucon/form": "^1.0 || ^2.0",
-        "symfony/framework-bundle": "^2.8 || ^3.0"
+        "php": "^7.1",
+        "naucon/form": "^3.0",
+        "symfony/config": "^3.2 || ^4.0",
+        "symfony/dependency-injection": "^3.2 || ^4.0",
+        "symfony/finder": "^3.2 || ^4.0",
+        "symfony/http-kernel": "^3.2 || ^4.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4.8 || ^5.6",
-        "symfony/translation": "^2.8 || ^3.0",
-        "symfony/validator": "^2.8 || ^3.0",
-        "symfony/security-csrf": "^2.8 || ^3.0",
-        "symfony/expression-language": "^2.8 || ^3.0"
+        "phpunit/phpunit": "^7.0"
     },
     "autoload": {
         "psr-4": {"Naucon\\Bundle\\FormBundle\\": ""}
