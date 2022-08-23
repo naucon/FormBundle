@@ -11,6 +11,9 @@
     </parameters>
 
     <services>
+        <service id="naucon_form.extension" class="Naucon\Bundle\FormBundle\Extension\NcFormExtension" public="false">
+            <tag name="twig.extension"/>
+        </service>
         <service id="naucon_form.translator" class="%naucon_form.translator.class%" public="false">
             <argument type="service" id="translator"/>
         </service>
