@@ -84,8 +84,22 @@ Get Started
     }
 ```
 
+Twig Form Extension
+------------------------
+This bundle defines a service for the naucon form extension for twig which adds new helper functions for building forms.
+This extension is automatically active when you enable this bundle.
+
+Example
+
+```php
+ {{ ncform_start(form, method='post', action='some-action', enctype='some type', {furtherOptions:'option'}) }}
+ {{ ncform_field(form, 'text', 'activation_code', { style: 'some style', id: 'some id', value: 'some value', maxlength: 'some lenght', class: 'css class', required: 'required', 'data-attribute': 'some attribute'}) }}
+ {{ ncform_end(form) }}
+```
+
+Further documentation
+https://github.com/naucon/Form/tree/master#formhelper-with-twig-templates
+
 Roadmap
 -------
-
-* Smarty Extensions integration
 * add naucon validator to translations

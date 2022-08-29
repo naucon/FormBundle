@@ -21,6 +21,9 @@
     "require-dev": {
         "phpunit/phpunit": "^7.0"
     },
+    "suggest": {
+        "twig/twig": "Is required for using the twig form extension"
+    },
     "autoload": {
         "psr-4": {"Naucon\\Bundle\\FormBundle\\": ""}
     }
