@@ -12,7 +12,7 @@
     ],
     "require": {
         "php": ">=7.3",
-        "naucon/form": "*",
+        "naucon/form": "3.2.0",
         "symfony/config": "^3.2 || ^4.0 || ^5.0",
         "symfony/dependency-injection": "^3.2 || ^4.0 || ^5.0",
         "symfony/finder": "^3.2 || ^4.0 || ^5.0",
