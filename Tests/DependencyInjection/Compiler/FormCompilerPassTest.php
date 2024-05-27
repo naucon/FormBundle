@@ -9,6 +9,7 @@
  */
 namespace Naucon\Bundle\FormBundle\Tests\DependencyInjection\Compiler;
 
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Naucon\Bundle\FormBundle\DependencyInjection\Compiler\FormCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -17,16 +18,16 @@ use Symfony\Component\DependencyInjection\Definition;
 class FormCompilerPassTest extends TestCase
 {
     /**
-     * @var ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
+     * @var ContainerBuilder|MockObject
      */
     private $containerMock;
 
     /**
-     * @var Definition|\PHPUnit_Framework_MockObject_MockObject
+     * @var Definition|MockObject
      */
     private $definitionMock;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->containerMock = $this->createMock(ContainerBuilder::class);
         $this->definitionMock = $this->createMock(Definition::class);

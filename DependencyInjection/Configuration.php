@@ -25,8 +25,8 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('naucon_form', 'array');
+        $treeBuilder = new TreeBuilder('naucon_form');
+        $rootNode = $treeBuilder->getRootNode();
         $rootNode->children()
             ->scalarNode('csrf_parameter')->defaultValue('_csrf_token')->end()
             ->booleanNode('csrf_protection')->defaultTrue()->end()
