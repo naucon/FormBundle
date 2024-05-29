@@ -11,15 +11,15 @@
         }
     ],
     "require": {
-        "php": "^7.1",
-        "naucon/form": "^3.1",
-        "symfony/config": "^3.2 || ^4.0",
-        "symfony/dependency-injection": "^3.2 || ^4.0",
-        "symfony/finder": "^3.2 || ^4.0",
-        "symfony/http-kernel": "^3.2 || ^4.0"
+        "php": ">=7.3",
+        "naucon/form": "^4.0.0",
+        "symfony/config": "^3.2 || ^4.0 || ^5.0",
+        "symfony/dependency-injection": "^3.2 || ^4.0 || ^5.0",
+        "symfony/finder": "^3.2 || ^4.0 || ^5.0",
+        "symfony/http-kernel": "^3.2 || ^4.0 || ^5.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.0"
+        "phpunit/phpunit": "^9.0"
     },
     "suggest": {
         "twig/twig": "Is required for using the twig form extension"

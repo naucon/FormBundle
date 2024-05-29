@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 namespace Naucon\Bundle\FormBundle\DependencyInjection;
-
+ 
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
@@ -25,8 +25,8 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('naucon_form', 'array');
+        $treeBuilder = new TreeBuilder('naucon_form');
+        $rootNode = $treeBuilder->getRootNode();
         $rootNode->children()
             ->scalarNode('csrf_parameter')->defaultValue('_csrf_token')->end()
             ->booleanNode('csrf_protection')->defaultTrue()->end()
